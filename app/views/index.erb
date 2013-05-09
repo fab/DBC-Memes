@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Welcome to DBC Memes</h1>
+  <p><a href='/upload'>Upload a meme</a></p>
+  <p><%= partial(:_upload_widget) %></p>
+  <% all_memes.each do |meme| %>
+    <img src='<%= meme.img_url %>/convert?w=200&h=200'>
+  <% end %>
+</div>
