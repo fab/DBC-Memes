@@ -36,3 +36,14 @@
   border: 10px solid black;
   z-index: 1002;
 }
+
+#close-button {
+  background: url(../images/close-button.png) no-repeat;
+  width: 25px;
+  height: 29px;
+  z-index: 2000;
+  position:absolute; 
+  top:-15px; 
+  right:-16px;
+  cursor: pointer;
+}
