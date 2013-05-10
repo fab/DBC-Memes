@@ -35,7 +35,7 @@ img {
   position: fixed;
   left: 50%;
   top: 50%;
-  margin-top: -20%;
+  margin-top: -27%;
   margin-left: -300px;
   width: 600px;
   border: 10px solid black;
@@ -51,8 +51,8 @@ img {
   width: 25px;
   height: 29px;
   z-index: 2000;
-  position:absolute; 
-  top:-15px; 
+  position:absolute;
+  top:-15px;
   right:-16px;
   cursor: pointer;
 }
