@@ -8,8 +8,12 @@ function openFilePicker() {
     function(FPFile){
       console.log(JSON.stringify(FPFile));
       //ajax call to save FPFile.url to database
-      var imgTag = ['<img src="', FPFile.url, '/convert?w=200&h=200">'].join('');
+      var imgUrl = FPFile.url;
+      $.post('upload', {img_url: imgUrl});
+      var imgTag = ['<img src="', imgUrl, '/convert?w=200&h=200">'].join('');
       $('#display-all-memes').append(imgTag);
+
+
       // updatePageWithUploadedFile(FPFile.url);
     },
     function(FPError){

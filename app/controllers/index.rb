@@ -4,9 +4,6 @@ get '/' do
 end
 
 
-get '/upload' do
-  "You tried to upload a meme!"
-  #upload pop up
-  #allow for tag input
-  #get filepicker io url and store in database
+post '/upload' do
+  Meme.create(img_url: params[:img_url])
 end
