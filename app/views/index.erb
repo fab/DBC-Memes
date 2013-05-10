@@ -1,9 +1,14 @@
-<div class="container">
+<div class='container'>
   <h1>Welcome to DBC Memes</h1>
   <p><a id='upload' href='#'>Upload a meme</a></p>
   <div id='display-all-memes'>
-  <% all_memes.each do |meme| %>
-    <div class='meme'><img src='<%= meme.img_url %>/convert?w=200&h=200'></div>
+  <% @all_memes.each do |meme| %>
+    <div id="<%= meme.id %>" class='meme'><img src='<%= meme.img_url %>/convert?w=200&h=200'></div>
   <% end %>
   </div>
 </div>
+<div class='overlay' id='overlay-background'></div>
+<div class='overlay' id='overlay-box'>
+</div>
+
+<script> lotsOfMemes = <%= @lotsOfMemes %> </script>

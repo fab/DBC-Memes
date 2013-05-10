@@ -1,5 +1,8 @@
-function Meme (imgUrl) {
+function Meme (id, imgUrl) {
+  this.id = id;
   this.imgUrl = imgUrl;
+  this.smallImg = ['<img src="', imgUrl, '/convert?w=200&h=200">'].join('');
+  this.bigImg = ['<img src="', imgUrl, '/convert?w=600&h=600">'].join('');
 }
 
 function openFilePicker() {
@@ -11,9 +14,8 @@ function openFilePicker() {
     },
     function(FPFile){
       var meme = new Meme (FPFile.url);
-      var imgTag = ['<img src="', meme.imgUrl, '/convert?w=200&h=200">'].join('');
       $.post('upload', meme);
-      $('#display-all-memes').append(imgTag);
+      $('#display-all-memes').append(meme.smallImg);
     },
     function(FPError){
       console.log(FPError.toString());
@@ -23,13 +25,27 @@ function openFilePicker() {
 
 
 $(document).ready(function() {
+  var allTheMemes = [];
+  $('.overlay').hide();
   $('#upload').on('click', function(e){
     e.preventDefault();
     openFilePicker();
   });
 
+  $(lotsOfMemes).each(function(index, value){
+    var parsed = jQuery.parseJSON(value);
+    var meme = new Meme(parsed.id, parsed.url);
+    allTheMemes.push(meme);
+  });
+
+  // instantiate js objects
+
   $('.meme').on('click', function(e){
-    
+    console.log('clicked');
+    $('.overlay').show();
+    var targetID = $(this).attr('id');
+    var photo = allTheMemes.filter(function(e){ return e.id == targetID; });
+    $('#overlay-box').append(photo[0].bigImg);
   });
 });
 
