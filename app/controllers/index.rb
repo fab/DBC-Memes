@@ -5,5 +5,5 @@ end
 
 
 post '/upload' do
-  Meme.create(img_url: params[:img_url])
+  Meme.create(img_url: params[:imgUrl])
 end

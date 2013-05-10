@@ -1,3 +1,7 @@
+function Meme (imgUrl) {
+  this.imgUrl = imgUrl;
+}
+
 function openFilePicker() {
   filepicker.setKey('AlhlEgr2SLOnvE4L9x0RQz');
   filepicker.pick({
@@ -6,9 +10,9 @@ function openFilePicker() {
     services:['COMPUTER', 'FACEBOOK', 'GMAIL', 'INSTAGRAM']
     },
     function(FPFile){
-      var imgUrl = FPFile.url;
-      var imgTag = ['<img src="', imgUrl, '/convert?w=200&h=200">'].join('');
-      $.post('upload', {img_url: imgUrl});
+      var meme = new Meme (FPFile.url);
+      var imgTag = ['<img src="', meme.imgUrl, '/convert?w=200&h=200">'].join('');
+      $.post('upload', meme);
       $('#display-all-memes').append(imgTag);
     },
     function(FPError){
@@ -22,6 +26,10 @@ $(document).ready(function() {
   $('#upload').on('click', function(e){
     e.preventDefault();
     openFilePicker();
+  });
+
+  $('.meme').on('click', function(e){
+    
   });
 });
 
