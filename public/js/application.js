@@ -46,7 +46,8 @@ $(document).ready(function() {
 
   $('#shuffle').on('click', function(e){
     e.preventDefault();
-    var newMemeCycle = setInterval(displayRandomMeme, 1000);
+    displayRandomMeme();
+    var newMemeCycle = setInterval(displayRandomMeme, 10000);
     $('#close-button').on('click', function(e){
       e.preventDefault();
       $('.overlay').hide();
