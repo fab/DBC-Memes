@@ -1,9 +1,28 @@
+function openFilePicker() {
+  filepicker.setKey('AlhlEgr2SLOnvE4L9x0RQz');
+  filepicker.pick({
+    mimetypes: ['image/*', 'text/plain'],
+    container: 'window',
+    services:['COMPUTER', 'FACEBOOK', 'GMAIL', 'INSTAGRAM']
+    },
+    function(FPFile){
+      console.log(JSON.stringify(FPFile));
+      //ajax call to save FPFile.url to database
+      var imgTag = ['<img src="', FPFile.url, '/convert?w=200&h=200">'].join('');
+      $('#display-all-memes').append(imgTag);
+      // updatePageWithUploadedFile(FPFile.url);
+    },
+    function(FPError){
+      console.log(FPError.toString());
+    }
+  );
+}
 
 
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('#upload').on('click', function(e){
+    e.preventDefault();
+    openFilePicker();
+  });
 });
+
