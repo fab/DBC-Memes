@@ -26,6 +26,15 @@ function openFilePicker() {
   );
 }
 
+function displayRandomMeme() {
+  $('.overlay').show();
+  $('#overlay-box').find('.bigmeme').remove();
+  var randomMeme = allTheMemes[Math.floor(Math.random()*allTheMemes.length)];
+  console.log(randomMeme);
+  var memeDiv = ['<div id="', randomMeme.id ,'" class="bigmeme">', randomMeme.bigImg,'</div>'].join('');
+  $('#overlay-box').append(memeDiv);
+}
+
 
 $(document).ready(function() {
   allTheMemes = [];
@@ -33,6 +42,17 @@ $(document).ready(function() {
   $('#upload').on('click', function(e){
     e.preventDefault();
     openFilePicker();
+  });
+
+  $('#shuffle').on('click', function(e){
+    e.preventDefault();
+    var newMemeCycle = setInterval(displayRandomMeme, 1000);
+    $('#close-button').on('click', function(e){
+      e.preventDefault();
+      $('.overlay').hide();
+      $('#overlay-box').find('.bigmeme').remove();
+      clearInterval(newMemeCycle);
+    });
   });
 
   $(lotsOfMemes).each(function(index, value){
@@ -44,14 +64,15 @@ $(document).ready(function() {
   $('#display-all-memes').on('click', '.meme', function(e){
     $('.overlay').show();
     var targetID = $(this).attr('id');
-    var photo = allTheMemes.filter(function(e){ return e.id == targetID; });
-    $('#overlay-box').append(photo[0].bigImg);
+    var photo = allTheMemes.filter(function(e){ return e.id == targetID; })[0];
+    var memeDiv = ['<div id="', photo.id ,'" class="bigmeme">', photo.bigImg,'</div>'].join('');
+    $('#overlay-box').append(memeDiv);
   });
 
   $('#close-button').on('click', function(e){
     e.preventDefault();
     $('.overlay').hide();
-    $('#overlay-box').find('img').remove();
+    $('#overlay-box').find('.bigmeme').remove();
   });
 });
 
