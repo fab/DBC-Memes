@@ -1,7 +1,7 @@
 helpers do
 
   def all_memes
-    Meme.all
+    Meme.all.shuffle
   end
 
   def partial (template, locals = {})

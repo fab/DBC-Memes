@@ -3,7 +3,7 @@
   <p><a id='upload' href='#'>Upload a meme</a></p>
   <div id='display-all-memes'>
   <% all_memes.each do |meme| %>
-    <img src='<%= meme.img_url %>/convert?w=200&h=200'>
+    <div class='meme'><img src='<%= meme.img_url %>/convert?w=200&h=200'></div>
   <% end %>
   </div>
 </div>

@@ -6,15 +6,10 @@ function openFilePicker() {
     services:['COMPUTER', 'FACEBOOK', 'GMAIL', 'INSTAGRAM']
     },
     function(FPFile){
-      console.log(JSON.stringify(FPFile));
-      //ajax call to save FPFile.url to database
       var imgUrl = FPFile.url;
-      $.post('upload', {img_url: imgUrl});
       var imgTag = ['<img src="', imgUrl, '/convert?w=200&h=200">'].join('');
+      $.post('upload', {img_url: imgUrl});
       $('#display-all-memes').append(imgTag);
-
-
-      // updatePageWithUploadedFile(FPFile.url);
     },
     function(FPError){
       console.log(FPError.toString());

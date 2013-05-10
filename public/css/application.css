@@ -1,9 +1,14 @@
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 700px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
-th {
-  text-align: left;
+
+.meme {
+  margin: 0 10px 0 10px;
+  display: inline-block;
+  border: 5px solid black;
+  width: 200px;
+  height: 200px;
 }
