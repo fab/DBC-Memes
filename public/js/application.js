@@ -42,14 +42,9 @@ $(document).ready(function() {
   });
 
   $('#display-all-memes').on('click', '.meme', function(e){
-    console.log('clicked');
     $('.overlay').show();
-    console.log($(this));
     var targetID = $(this).attr('id');
-    console.log(targetID);
     var photo = allTheMemes.filter(function(e){ return e.id == targetID; });
-    console.log(photo);
-    console.log(photo[0]);
     $('#overlay-box').append(photo[0].bigImg);
   });
 
