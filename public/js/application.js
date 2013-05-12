@@ -13,12 +13,12 @@ function openFilePicker() {
     services:['COMPUTER', 'FACEBOOK', 'GMAIL', 'INSTAGRAM']
     },
     function(FPFile){
-      var tempID = allTheMemes[allTheMemes.length - 1].id + 1;
+      var tempID = allTheMemes[0].id + 1;
       var meme = new Meme (tempID, FPFile.url);
       allTheMemes.push(meme);
       $.post('upload', meme);
       var memeDiv = ['<div id="', tempID,'" class="meme">', meme.smallImg,'</div>'].join('');
-      $('#display-all-memes').append(memeDiv);
+      $('#display-all-memes').prepend(memeDiv);
     },
     function(FPError){
       console.log(FPError.toString());
