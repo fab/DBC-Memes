@@ -7,18 +7,20 @@ function Meme (id, imgUrl) {
 
 function openFilePicker() {
   filepicker.setKey('AlhlEgr2SLOnvE4L9x0RQz');
-  filepicker.pick({
+  filepicker.pickMultiple({
     mimetypes: ['image/*', 'text/plain'],
     container: 'window',
     services:['COMPUTER', 'FACEBOOK', 'GMAIL', 'INSTAGRAM']
     },
-    function(FPFile){
-      var tempID = allTheMemes[0].id + 1;
-      var meme = new Meme (tempID, FPFile.url);
-      allTheMemes.push(meme);
-      $.post('upload', meme);
-      var memeDiv = ['<div id="', tempID,'" class="meme">', meme.smallImg,'</div>'].join('');
-      $('#display-all-memes').prepend(memeDiv);
+    function(FPFiles){
+      $.each(FPFiles, function(index, FPFile){
+        var tempID = allTheMemes[index].id + 100;
+        var meme = new Meme (tempID, FPFile.url);
+        allTheMemes.push(meme);
+        $.post('upload', meme);
+        var memeDiv = ['<div id="', tempID,'" class="meme">',meme.smallImg,'</div>'].join('');
+        $('#display-all-memes').prepend(memeDiv);
+      });
     },
     function(FPError){
       console.log(FPError.toString());
