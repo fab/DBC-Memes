@@ -4,5 +4,5 @@ An app to display memes of moments at Dev Bootcamp and programming in general.
 
 It's live at [dbcmemes.com](http://dbcmemes.com)
 
-<h2>Contributing is encouraged!</h2>
-I've approved pull requests already and would love to see more happen. It seems that people are enjoying this site so I would like to keep giving back to DBC and constantly improve the experience.
+Myself and a group of others have since released an updated version of the idea: [MemeOverflow](http://github.com/fmackojc/memeoverflow)
+You can check out the latest version of the DBC Memes conecept at [memeoverflow.com](http://memeoverflow.com)
